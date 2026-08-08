@@ -1,0 +1,32 @@
+flowchart TD
+    subgraph SensoryInputs ["1. Sensory Inputs"]
+        UserText["💬 Text Message"]
+        TouchInput["🖐️ Physical Touch"]
+        VisionInput["👁️ Image / Screen"]
+    end
+
+    subgraph KalosSuite ["2. Kalos C/CUDA Engine Suite (libkalos_*.so)"]
+        HapticsModule["🖐️ Haptics Engine\n(Physical Contact & Warmth)"]
+        SNNModule["⚡ Reflex Sentry (SNN)\n(Sub-millisecond Event Detection)"]
+        SAMModule["🧠 Associative Memory (SAM)\n(Microsecond Memory Recall)"]
+        ChiasmModule["🌉 Vision Bridge (Chiasm)\n(7B Vision -> 24B Model Connector)"]
+    end
+
+    subgraph IdentityStorage ["3. Identity Persistence (.soul File)"]
+        SoulFile["💾 kalos_identity.soul\n(2.50 MB Compact File on Disk)"]
+    end
+
+    subgraph CognitiveMind ["4. Cognitive Mind"]
+        KalosLLM["🐺 Kalos 24B Model\n(Rich Personality & Companion)"]
+    end
+
+    UserText --> SNNModule
+    TouchInput --> HapticsModule
+    VisionInput --> ChiasmModule
+    HapticsModule --> SNNModule
+    SNNModule --> SAMModule
+    SAMModule <--> SoulFile
+    SAMModule --> KalosLLM
+    ChiasmModule --> KalosLLM
+    HapticsModule --> KalosLLM
+    KalosLLM --> FinalResponse["💬 Response & Haptic Reaction"]

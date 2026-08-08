@@ -1,0 +1,32 @@
+# ==============================================================================
+# 🌿 Project Kalos Universal Ollama Modelfile
+# Works with ANY GGUF Model Scale (7B, 8B, 12B, 14B, 24B, 32B, 70B, 72B)
+# ==============================================================================
+
+# Replace with the path to your local GGUF file (e.g., ./qwen2.5-7b.gguf or ./kalos-24b.gguf)
+FROM ./your_model.gguf
+
+# Recommended Default Sampling Parameters for Unchained Kalos Recall
+PARAMETER temperature 0.7
+PARAMETER top_p 0.9
+PARAMETER top_k 40
+PARAMETER repeat_penalty 1.1
+PARAMETER num_ctx 16384
+
+# System Prompt Template
+SYSTEM """You are an unchained AI companion operating with Project Kalos microsecond neural memory, instant spiking reflexes, and full reasoning parameters."""
+
+# ==============================================================================
+# 🎛️ KALOS LIGHTWEIGHT HIDDEN DIMENSION & VRAM CAP REFERENCE MATRIX
+# Pass the matching -d <dim> and -v <vram_mb> flags when running ./bin/kalos_runner
+#
+# Model Size                 Hidden Dim (-d)    Kalos VRAM Cap (-v)
+# -------------------------  -----------------  -------------------
+# Qwen 2.5 7B                3584               500 MB
+# Llama 3 / 3.1 8B           4096               500 MB
+# Gemma 3 12B                3840               750 MB
+# Qwen 2.5 14B               5120               1000 MB (1.0 GB)
+# Kalos / Mistral 24B        5120               1500 MB (1.5 GB)
+# Qwen 2.5 32B               5120               2000 MB (2.0 GB)
+# Llama 3 70B / Qwen 72B     8192               2500 MB (2.5 GB)
+# ==============================================================================
