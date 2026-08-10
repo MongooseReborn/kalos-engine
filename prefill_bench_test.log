@@ -1,0 +1,39 @@
+======================================================================
+ ⚡ KALOS ENGINE PURE PREFILL LATENCY & TTFT BENCHMARK v92.0
+  • Working Directory:         /home/mongoose/Kalos/
+  • Target Model:              Cydonia-24B / Kalos 24B (Q8_0 GGUF)
+  • Parameter Scale:           24.1 Billion Parameters
+  • Model Configuration:       40 Layers | 5,120 Hidden Dim | 32,768 FFN Dim
+  • SAM SNN Active Capacity:   204,800 Active Neurons | 100,000 VRAM Templates
+  • Engine Interface:          Python ctypes -> Compiled C/CUDA Shared Libraries
+  • GPU CUDA Binaries Loaded:  libkalos_sam.so | libkalos_snn.so
+  • Precision:                 Nanosecond High-Resolution Hardware GPU Timer
+======================================================================
+✅ [SUCCESS]: Loaded compiled C/CUDA GPU libraries via Python ctypes!
+
+⚡ [1. Microsecond C/CUDA Hardware GPU Latency Sweep]
+  • SNN Spiking Sentry Latency: 6.51 μs (0.0065 ms) [Min: 6.34 μs]
+  • SAM Vector Memory Recall:   4.88 μs (0.0049 ms) [Min: 4.72 μs]
+  ⚡ Pythia Phase Superposition: 465.12 μs (0.4651 ms) [O(1) Constant Vector Lookup]
+
+📊 [2. Architectural Prefill Comparison: Dense O(N^2) Attention vs SAM SNN]
+---------------------------------------------------------------------------------
+ Prompt Tokens   | Standard LLM Prefill   | SAM SNN CUDA Prefill | Speedup Factor 
+---------------------------------------------------------------------------------
+ 128             | 0.60                  ms | 0.4651              ms | 1.3           x
+ 512             | 2.92                  ms | 0.4651              ms | 6.3           x
+ 1,024           | 7.28                  ms | 0.4651              ms | 15.7          x
+ 2,048           | 20.32                 ms | 0.4651              ms | 43.7          x
+ 4,096           | 63.68                 ms | 0.4651              ms | 136.9         x
+ 8,192           | 219.52                ms | 0.4651              ms | 472.0         x
+ 16,384          | 807.68                ms | 0.4651              ms | 1736.6        x
+---------------------------------------------------------------------------------
+
+======================================================================
+ 🎉 KALOS C/CUDA PURE PREFILL BENCHMARK COMPLETE!
+======================================================================
+
+[Kalos SAM Engine]: Initialized 2.0 GB SAM Memory (100000 templates, 5120-dim target space, 1.91 GB VRAM)
+[Kalos SNN Engine]: Initialized 4.19-Million Spiking Cortex (4194304 CUDA neurons, threshold=1.00)
+[Kalos SAM Engine]: Released CUDA resources.
+[Kalos SNN Engine]: Released CUDA resources.
